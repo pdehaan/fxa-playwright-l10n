@@ -1,0 +1,16 @@
+{
+  "name": "fxa-playwright-l10n",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "playwright test # --workers=8 # --headed"
+  },
+  "keywords": [],
+  "author": "Peter deHaan <peter@deseloper.com>",
+  "license": "MPL-2.0",
+  "devDependencies": {
+    "@playwright/test": "^1.22.1",
+    "@sindresorhus/slugify": "^2.1.0"
+  }
+}
