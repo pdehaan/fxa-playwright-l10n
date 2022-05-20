@@ -4,8 +4,9 @@ import { test, expect } from '@playwright/test';
 const BASE_URL = "https://accounts.stage.mozaws.net/";
 const FULL_PAGE = true;
 
-
-// const locales = ["es", "de", "en-US", "fr", "it", "ja", "pl", "sv"];
+// TODO: Fetch this from Pontoon? Currently this is just a hacky copy/paste from
+// https://github.com/mozilla/fxa/blob/main/packages/fxa-shared/l10n/supportedLanguages.json
+// Although I believe many of those translations are below the 80% theoretical threshold.
 const locales = [
   "ar",
   "ast",
@@ -81,11 +82,13 @@ const locales = [
   "zh-TW"
 ];
 
-// Running 32 tests using 8 workers (7s)
+// Running 288 tests using 10 workers => 288 passed (56s)
 test.describe.configure({ mode: 'parallel' });
 
-// Running 32 tests using 1 worker (49s)
-// Slow test file: [chrome] › index.spec.mjs (49s)
+// NOTE: If running without `{mode:"parallel"}`...
+// Running 288 tests using 1 worker => 146 passed (5m) (and then it started failing locally for me after about 50% of the tests ran)
+//
+// Slow test file: [chrome] › index.spec.mjs (5m)
 // Consider splitting slow test files to speed up parallel execution
 
 for (const locale of locales) {
